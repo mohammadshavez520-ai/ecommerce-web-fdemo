@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Leafora Herbal Private Limited - Healing Naturally",
   description:
-    "Leafora Herbal Private Limited - Authentic Ayurvedic Wellness, Natural Supplements, and Herbal Care. 100% Ayurvedic, Ayush certified with pure herbs.",
+    "Leafora Herbal Private Limited - Authentic Ayurvedic Wellness, Natural Supplements, and Herbal Care. 100% Ayurvedic, formulated with pure lab-tested herbs.",
   keywords: [
     "Leafora",
     "Leafora Herbal",

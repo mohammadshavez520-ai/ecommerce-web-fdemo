@@ -33,7 +33,7 @@ const POLICIES = [
     title: "Terms & Conditions",
     href: "/legal/terms",
     description:
-      "The terms and conditions governing the use of our website, purchase of authentic Ayush formulations, pricing, discounts, and customer agreements.",
+      "The terms and conditions governing the use of our website, purchase of authentic Ayurvedic formulations, pricing, discounts, and customer agreements.",
     icon: FileText,
     tag: "Governing Terms",
   },
@@ -57,9 +57,9 @@ const POLICIES = [
     title: "Medical & Health Disclaimer",
     href: "/legal/disclaimer",
     description:
-      "Important health statements regarding our authentic Ayurvedic proprietary formulations, Ayush certifications, usage consistency, and consultation guidance.",
+      "Important health statements regarding our authentic Ayurvedic proprietary formulations, quality standards, usage consistency, and consultation guidance.",
     icon: HelpCircle,
-    tag: "Ayush Compliant",
+    tag: "Health & Safety",
   },
   {
     title: "Contact & Grievance Redressal",

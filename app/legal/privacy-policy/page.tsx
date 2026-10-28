@@ -56,7 +56,7 @@ export default function PrivacyPolicyPage() {
               100% Data Confidentiality &amp; Zero Spam Guarantee
             </strong>
             <span>
-              Leafora Herbal Private Limited never rents, trades, or sells your phone number or personal details to unauthorized third-party advertisers. Your information is strictly utilized to process, ship, and deliver your authentic Ayush orders.
+              Leafora Herbal Private Limited never rents, trades, or sells your phone number or personal details to unauthorized third-party advertisers. Your information is strictly utilized to process, ship, and deliver your authentic herbal wellness orders.
             </span>
           </div>
         </div>
@@ -112,7 +112,7 @@ export default function PrivacyPolicyPage() {
           <span>Information We Collect</span>
         </h2>
         <p className="text-sm text-gray-600 leading-relaxed font-normal">
-          We only collect personal information that is reasonably necessary to fulfill your orders, provide Ayush product dosage advice, and communicate shipping milestones:
+          We only collect personal information that is reasonably necessary to fulfill your orders, provide herbal wellness dosage advice, and communicate shipping milestones:
         </p>
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs sm:text-sm text-gray-700">
           <li className="p-3.5 rounded-xl bg-gray-50 border border-gray-200 flex items-start gap-2.5">

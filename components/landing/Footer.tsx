@@ -27,7 +27,7 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-2 text-xs font-semibold text-emerald-300">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>Ayush Certified &amp; GMP Compliant</span>
+              <span>100% Herbal &amp; Lab-Tested</span>
             </div>
           </div>
 
@@ -128,7 +128,7 @@ export function Footer() {
               <span>Customer Care</span>
             </h4>
             <p className="text-xs text-emerald-200/80 mb-4 leading-relaxed">
-              Have questions or need order assistance? Our Ayush experts are available to guide you.
+              Have questions or need order assistance? Our herbal wellness experts are available to guide you.
             </p>
 
             {/* Helpline Card */}
@@ -176,7 +176,7 @@ export function Footer() {
         <div className="pt-8 border-t border-emerald-900/70 text-center text-xs text-emerald-300/70 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p>© All Copyright {currentYear} Leafora Herbal Private Limited. All Rights Reserved.</p>
           <p className="text-[11px] text-emerald-400/60">
-            Results may vary from person to person. Authentic Ayush formulations only on Leafora Herbal Private Limited.
+            Results may vary from person to person. Authentic Ayurvedic formulations only on Leafora Herbal Private Limited.
           </p>
         </div>
       </div>

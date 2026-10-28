@@ -441,7 +441,7 @@ function CheckoutContent() {
               <div className="space-y-2 pt-2 text-[11px] text-gray-500">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>100% genuine Ayurvedic formula · Ayush Certified</span>
+                  <span>100% genuine Ayurvedic formula · Lab Tested Purity</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Truck className="w-4 h-4 text-emerald-600 shrink-0" />

@@ -24,10 +24,10 @@ const FAQS: FAQItem[] = [
     aHi: "गुड़मार, करेला, जामुन और विजयसार के मिश्रण से यह आंतों में चीनी के अवशोषण को रोकता है, पैंक्रियाज की बीटा कोशिकाओं को पोषण देता है और भोजन के बाद शुगर स्पाइक्स को रोकता है।",
   },
   {
-    qEn: "Are Leafora Herbal formulations 100% safe and Ayush certified?",
-    qHi: "क्या Leafora Herbal के उत्पाद 100% सुरक्षित और आयुष प्रमाणित हैं?",
-    aEn: "Yes, all products from Leafora Herbal Private Limited are certified by the Ministry of Ayush and manufactured in GMP-certified facilities. They contain zero steroids, zero synthetic stimulants, and zero heavy metals.",
-    aHi: "हाँ, Leafora Herbal Private Limited के सभी उत्पाद आयुष मंत्रालय द्वारा प्रमाणित और GMP सर्टिफाइड हैं। इनमें कोई हानिकारक स्टेरॉइड, भारी धातुएँ या केमिकल नहीं हैं।",
+    qEn: "Are Leafora Herbal formulations 100% safe and naturally pure?",
+    qHi: "क्या Leafora Herbal के उत्पाद 100% सुरक्षित और प्राकृतिक हैं?",
+    aEn: "Yes, all products from Leafora Herbal Private Limited are 100% natural, independently lab-tested, and manufactured under strict quality standards. They contain zero steroids, zero synthetic stimulants, and zero heavy metals.",
+    aHi: "हाँ, Leafora Herbal Private Limited के सभी उत्पाद 100% प्राकृतिक और लैब-परीक्षित हैं। इनमें कोई हानिकारक स्टेरॉइड, भारी धातुएँ या केमिकल नहीं हैं।",
   },
   {
     qEn: "How long should I take these products to see lasting results?",

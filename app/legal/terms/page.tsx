@@ -16,7 +16,7 @@ import {
 export const metadata: Metadata = {
   title: "Terms & Conditions | Leafora Herbal Private Limited",
   description:
-    "Official Terms and Conditions governing the use of Leafora Herbal Private Limited website, purchases, and authentic Ayush formulations.",
+    "Official Terms and Conditions governing the use of Leafora Herbal Private Limited website, purchases, and authentic Ayurvedic formulations.",
 };
 
 export default function TermsPage() {
@@ -51,10 +51,10 @@ export default function TermsPage() {
           <ShieldCheck className="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" />
           <div>
             <strong className="block text-emerald-900 font-bold mb-0.5">
-              Authentic Ayush Certified Formulations Only
+              Authentic Pure Herbal Formulations Only
             </strong>
             <span>
-              All products sold by Leafora Herbal Private Limited are authentic Ayurvedic proprietary formulations manufactured under strict Good Manufacturing Practices (GMP) and certified by the Ministry of Ayush.
+              All products sold by Leafora Herbal Private Limited are authentic Ayurvedic proprietary formulations crafted with 100% natural herbs and verified laboratory purity.
             </span>
           </div>
         </div>
@@ -89,7 +89,7 @@ export default function TermsPage() {
           <span>Products, Formulations &amp; Wellness Usage</span>
         </h2>
         <p className="text-sm text-gray-600 leading-relaxed font-normal">
-          Our products (including Josh 1000 Capsule, Time Master Combo, Stop Sugar Powder, and Diasure Herb Powder) are herbal Ayurvedic health supplements designed for physiological vitality and metabolic equilibrium. They are not intended as emergency replacements for clinical prescription drugs. Individual results may vary based on Prakriti, age, and regular regimen adherence. We encourage reading product packaging guidelines and contacting our Ayush team at <strong>+91 8630552164</strong> for dosage advice.
+          Our products (including Josh 1000 Capsule, Time Master Combo, Stop Sugar Powder, and Diasure Herb Powder) are herbal Ayurvedic health supplements designed for physiological vitality and metabolic equilibrium. They are not intended as emergency replacements for clinical prescription drugs. Individual results may vary based on Prakriti, age, and regular regimen adherence. We encourage reading product packaging guidelines and contacting our wellness team at <strong>+91 8630552164</strong> for dosage advice.
         </p>
       </section>
 

@@ -133,10 +133,10 @@ export default function RefundsPage() {
         <div className="p-4 rounded-2xl bg-amber-50/80 border border-amber-200 text-xs sm:text-sm text-amber-950 space-y-2">
           <div className="flex items-center gap-2 font-black text-amber-900">
             <AlertTriangle className="w-4 h-4 text-amber-700 shrink-0" />
-            <span>Strict Hygiene Standards for Ayush Formulations</span>
+            <span>Strict Hygiene Standards for Herbal Formulations</span>
           </div>
           <p className="leading-relaxed">
-            Due to the consumable nature of Ayurvedic health supplements (oral capsules, herbal powders, and topical massage oils), bottles or containers that have been opened, consumed, or unsealed cannot be returned for restock or exchange under Ministry of Ayush &amp; FSSAI health sanitation guidelines. However, genuine manufacturing defects or transit damages are always 100% replaced or refunded without hesitation.
+            Due to the consumable nature of Ayurvedic health supplements (oral capsules, herbal powders, and topical massage oils), bottles or containers that have been opened, consumed, or unsealed cannot be returned for restock or exchange under consumer health sanitation guidelines. However, genuine manufacturing defects or transit damages are always 100% replaced or refunded without hesitation.
           </p>
         </div>
       </section>

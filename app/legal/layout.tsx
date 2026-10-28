@@ -107,7 +107,7 @@ export default function LegalLayout({
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-3 text-center sm:text-left">
           <div className="flex items-center justify-center sm:justify-start gap-2">
             <ShieldCheck className="w-4 h-4 text-emerald-700 shrink-0" />
-            <span>Ministry of Ayush Certified</span>
+            <span>100% Lab-Tested Purity</span>
           </div>
           <div className="flex items-center justify-center sm:justify-start gap-2">
             <Award className="w-4 h-4 text-emerald-700 shrink-0" />

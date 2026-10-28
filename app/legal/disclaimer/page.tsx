@@ -15,7 +15,7 @@ import {
 export const metadata: Metadata = {
   title: "Medical & Health Disclaimer | Leafora Herbal Private Limited",
   description:
-    "Official Ayurvedic Health and Medical Disclaimer for Leafora Herbal Private Limited formulations, Ministry of Ayush compliance, and consultation advice.",
+    "Official Ayurvedic Health and Medical Disclaimer for Leafora Herbal Private Limited formulations, quality compliance, and consultation advice.",
 };
 
 export default function DisclaimerPage() {
@@ -28,7 +28,7 @@ export default function DisclaimerPage() {
         <div className="flex flex-wrap items-center gap-2">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider text-emerald-900 bg-emerald-100 border border-emerald-300">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
-            <span>Ayush Regulatory Compliance</span>
+            <span>Quality &amp; Safety Compliance</span>
           </span>
           <span className="text-xs font-semibold text-gray-500">
             Last Updated: {lastUpdated}
@@ -62,7 +62,7 @@ export default function DisclaimerPage() {
           className="shrink-0 py-2 px-4 rounded-xl bg-[#0c2415] text-[#fbeea4] font-extrabold text-xs flex items-center gap-2 shadow-xs hover:bg-black transition"
         >
           <PhoneCall className="w-3.5 h-3.5" />
-          <span>Consult Ayush: +91 8630552164</span>
+          <span>Consult Helpline: +91 8630552164</span>
         </a>
       </div>
 
@@ -75,7 +75,7 @@ export default function DisclaimerPage() {
           <span>Authentic Ayurvedic Classification</span>
         </h2>
         <p className="text-sm text-gray-600 leading-relaxed font-normal">
-          All formulations produced by <strong>Leafora Herbal Private Limited</strong> (including Josh 1000 Capsule, Time Master Combo, Stop Sugar Powder, and Diasure Herb Powder) are manufactured in GMP-certified facilities adhering to the rigorous pharmacopeial standards laid down by the Ministry of Ayush, Government of India.
+          All formulations produced by <strong>Leafora Herbal Private Limited</strong> (including Josh 1000 Capsule, Time Master Combo, Stop Sugar Powder, and Diasure Herb Powder) are manufactured in GMP-certified facilities adhering to rigorous pharmacopeial standards and laboratory testing benchmarks.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs pt-1">
           <div className="p-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-700 font-medium flex items-center gap-2">
@@ -139,11 +139,11 @@ export default function DisclaimerPage() {
         <div className="flex items-center gap-2">
           <Stethoscope className="w-5 h-5 text-emerald-300" />
           <h2 className="text-lg font-black text-white">
-            Free Ayush Practitioner Consultation
+            Free Herbal Wellness Consultation
           </h2>
         </div>
         <p className="text-xs sm:text-sm text-emerald-100 leading-relaxed">
-          Need personalized advice regarding your health condition, drug interactions, or optimal daily dosage? Our verified Ayurvedic consultants are available 6 days a week to assist you free of charge.
+          Need personalized advice regarding your health condition or optimal daily dosage? Our verified Ayurvedic consultants are available 6 days a week to assist you free of charge.
         </p>
         <div className="pt-2 flex flex-col sm:flex-row items-center gap-3">
           <a
@@ -151,7 +151,7 @@ export default function DisclaimerPage() {
             className="w-full sm:w-auto py-2.5 px-5 rounded-xl bg-white text-emerald-950 font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-sm hover:bg-emerald-100 transition"
           >
             <PhoneCall className="w-4 h-4 text-emerald-800" />
-            <span>Call Doctor Desk: +91 8630552164</span>
+            <span>Call Support Desk: +91 8630552164</span>
           </a>
           <span className="text-xs text-emerald-200">
             Monday to Saturday · 9:30 AM to 7:30 PM IST

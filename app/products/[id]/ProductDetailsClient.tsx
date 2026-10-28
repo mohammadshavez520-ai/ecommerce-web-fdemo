@@ -255,19 +255,19 @@ const STANDARD_FAQS = [
   },
   {
     q: "Are there any side effects, steroids, or chemical additives?",
-    a: "Zero side effects. Leafora Herbal formulations are 100% Ayurvedic, formulated with pure standardized herbs, and certified by the Ministry of Ayush. They are completely free from chemical steroids, synthetic hormones, heavy metals, or habit-forming substances.",
+    a: "Zero side effects. Leafora Herbal formulations are 100% Ayurvedic, formulated with pure standardized herbs, and independently lab-tested. They are completely free from chemical steroids, synthetic hormones, heavy metals, or habit-forming substances.",
   },
   {
     q: "Are Leafora Herbal formulations safe for long-term daily use?",
-    a: "Yes. All Leafora Herbal formulations are 100% classical Ayurvedic preparations certified by the Ministry of Ayush. They work synergistically with your body's natural metabolism and are completely non-habit forming.",
+    a: "Yes. All Leafora Herbal formulations are 100% classical Ayurvedic preparations made from pure herbs. They work synergistically with your body's natural metabolism and are completely non-habit forming.",
   },
   {
     q: "Is Cash on Delivery (COD) available with Free Shipping?",
     a: "Yes! We provide Free Pan-India Express Shipping on all orders. You can choose Cash on Delivery (COD) at checkout with zero extra fees, or pay online to enjoy an additional flat ₹400 instant prepaid discount.",
   },
   {
-    q: "Do I need a doctor's prescription to order Leafora Herbal products?",
-    a: "No prescription is required. Leafora Herbal formulations are classified as authentic Ayurvedic proprietary health supplements under Ayush guidelines and are completely safe for daily use.",
+    q: "Do I need a prescription to order Leafora Herbal products?",
+    a: "No prescription is required. Leafora Herbal formulations are authentic herbal health supplements and are completely safe for daily use.",
   },
   {
     q: "What daily routine should I follow for peak results?",
@@ -405,7 +405,7 @@ export function ProductDetailsClient({
               <div className="w-8 h-8 rounded-full bg-emerald-100/90 text-emerald-800 border border-emerald-200/90 flex items-center justify-center mb-1 shadow-2xs">
                 <ShieldCheck className="w-4 h-4 text-emerald-700" strokeWidth={2.2} />
               </div>
-              <span className="text-[11px] sm:text-xs font-bold text-gray-900 block leading-tight">Ayush Certified</span>
+              <span className="text-[11px] sm:text-xs font-bold text-gray-900 block leading-tight">Lab-Tested Purity</span>
               <span className="text-[9px] sm:text-[10px] text-gray-500 font-medium block leading-tight mt-0.5 truncate">100% Herbal Formula</span>
             </div>
 
@@ -729,10 +729,10 @@ export function ProductDetailsClient({
                   </div>
                   <div>
                     <h5 className="font-semibold text-xs sm:text-sm text-gray-900">
-                      Ayush &amp; GMP Certified Quality
+                      Standardized Laboratory Quality
                     </h5>
                     <p className="text-xs text-gray-600 mt-0.5 font-normal leading-relaxed">
-                      Manufactured in certified cleanroom facilities complying with highest Ayurvedic standards.
+                      Manufactured in certified cleanroom facilities complying with highest purity and herbal standards.
                     </p>
                   </div>
                 </div>
@@ -1110,9 +1110,9 @@ export function ProductDetailsClient({
               <ShieldCheck className="w-5 h-5" strokeWidth={2} />
             </div>
             <div className="space-y-0.5">
-              <h4 className="text-sm font-bold">100% Ayurvedic &amp; Ayush Certified</h4>
+              <h4 className="text-sm font-bold">100% Pure Herbal Extracts</h4>
               <p className="text-xs text-gray-300 leading-relaxed font-normal">
-                Formulated under classical Charaka Samhita Rasayana principles with zero synthetic steroids or chemicals.
+                Crafted with authentic Ayurvedic botanicals and zero synthetic steroids, heavy metals, or chemicals.
               </p>
             </div>
           </div>
@@ -1136,7 +1136,7 @@ export function ProductDetailsClient({
             <div className="space-y-0.5">
               <h4 className="text-sm font-bold">10,000+ Happy Customers</h4>
               <p className="text-xs text-gray-300 leading-relaxed font-normal">
-                Consistent 4.9★ rating backed by thousands of genuine transformations and doctor recommendations.
+                Consistent 4.9★ rating backed by thousands of genuine transformations and verified customer reviews.
               </p>
             </div>
           </div>

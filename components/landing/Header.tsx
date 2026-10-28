@@ -37,7 +37,7 @@ export function Header({ onOpenCheckout }: { onOpenCheckout?: () => void }) {
             <Truck className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Free Cash On Delivery (COD) All Over India
           </span>
           <span className="flex items-center gap-2">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Ministry of Ayush &amp; GMP Certified
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> 100% Pure Herbal Extracts · Lab Tested
           </span>
           <span className="flex items-center gap-2 font-semibold text-emerald-300">
             <CreditCard className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Extra ₹400 OFF on Prepaid Orders
@@ -57,7 +57,7 @@ export function Header({ onOpenCheckout }: { onOpenCheckout?: () => void }) {
             <Truck className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Free Cash On Delivery (COD) All Over India
           </span>
           <span className="flex items-center gap-2">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Ministry of Ayush &amp; GMP Certified
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> 100% Pure Herbal Extracts · Lab Tested
           </span>
           <span className="flex items-center gap-2 font-semibold text-emerald-300">
             <CreditCard className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> Extra ₹400 OFF on Prepaid Orders

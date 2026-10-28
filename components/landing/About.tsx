@@ -37,11 +37,11 @@ export function About() {
 
           <div className="p-5 rounded-2xl bg-[#faf9f5] border border-gray-200/80 shadow-2xs">
             <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center mb-3">
-              <Award className="w-5 h-5 text-amber-700" />
+              <CheckCircle2 className="w-5 h-5 text-amber-700" />
             </div>
-            <h4 className="text-sm font-black text-gray-900">Ayush &amp; GMP Certified</h4>
+            <h4 className="text-sm font-black text-gray-900">Lab-Tested Purity</h4>
             <p className="text-xs text-gray-600 mt-1 leading-relaxed">
-              Manufactured under strict ISO &amp; GMP certified pharmaceutical facilities meeting clinical hygiene guidelines.
+              Standardized botanical extracts independently tested for purity, optimal potency, and strict quality control.
             </p>
           </div>
 
@@ -59,9 +59,9 @@ export function About() {
             <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center mb-3">
               <HeartPulse className="w-5 h-5 text-blue-700" />
             </div>
-            <h4 className="text-sm font-black text-gray-900">Doctor Formulated</h4>
+            <h4 className="text-sm font-black text-gray-900">Deep Bio-Absorption</h4>
             <p className="text-xs text-gray-600 mt-1 leading-relaxed">
-              Balanced according to authentic Charaka Samhita Rasayana principles for maximum biological bioavailability.
+              Synergistic multi-herb formulation engineered for smooth bodily digestion, cellular vitality, and daily stamina.
             </p>
           </div>
         </div>
@@ -88,12 +88,12 @@ export function About() {
             <div className="flex flex-col items-center border-x border-emerald-800/60">
               <Star className="w-5 h-5 text-amber-400 fill-amber-400 mb-1" />
               <span className="text-2xl sm:text-3xl font-black text-amber-400">4.9 / 5.0</span>
-              <span className="text-xs font-bold text-emerald-300 mt-0.5">Doctor Rating</span>
+              <span className="text-xs font-bold text-emerald-300 mt-0.5">Customer Rating</span>
             </div>
             <div className="flex flex-col items-center">
               <ShieldCheck className="w-5 h-5 text-emerald-400 mb-1" />
               <span className="text-2xl sm:text-3xl font-black text-emerald-400">100%</span>
-              <span className="text-xs font-bold text-emerald-300 mt-0.5">Ayush Safe</span>
+              <span className="text-xs font-bold text-emerald-300 mt-0.5">Pure &amp; Natural</span>
             </div>
           </div>
         </div>

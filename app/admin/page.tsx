@@ -575,8 +575,8 @@ export default function AdminPage() {
             ? prod.highlights
             : [
                 "100% Pure Standardized Ayurvedic Extracts",
-                "Non-Hormonal & Ayush Certified Formula",
-                "GMP Quality Manufactured & Clinically Tested",
+                "Non-Hormonal & Pure Herbal Formula",
+                "Laboratory Quality Tested & Standardized",
                 "Visible Enduring Results with Zero Steroids",
               ],
         dosage:
@@ -596,12 +596,12 @@ export default function AdminPage() {
       setEditingProduct(null);
       const defaultDesc = `# Premium Ayurvedic Wellness Formulation
 
-Leafora Herbal Private Limited produces authentic classical Rasayana remedies formulated with 100% standardized botanicals. Clinically tested for maximum biological potency with zero steroids or chemicals.
+Leafora Herbal Private Limited produces authentic remedies formulated with 100% standardized botanicals. Independently tested for maximum biological potency with zero steroids or chemicals.
 
 ## Key Benefits
 - **Pure Botanical Power**: Standardized Ayurvedic herbs tested for active phyto-nutrients.
-- **Ayush & GMP Certified**: 100% Herbal, GMP manufactured, zero steroids or synthetic hormones.
-- **Deep Bioavailability**: Formulated according to classical Charaka Samhita Rasayana principles.
+- **Lab-Tested Quality**: 100% Herbal, strictly tested, zero steroids or synthetic hormones.
+- **Deep Bioavailability**: Formulated with synergistic natural herbs for smooth digestion.
 - **Zero Side Effects**: Safe for long-term daily consumption.
 
 ## Recommended Daily Routine
@@ -618,7 +618,7 @@ Leafora Herbal Private Limited produces authentic classical Rasayana remedies fo
       setProductForm({
         name: "",
         slug: "",
-        tagline: "100% Ayurvedic Formula · Ayush & GMP Certified",
+        tagline: "100% Ayurvedic Formula · Lab-Tested Purity",
         sku: `LEA-SKU-${Math.floor(1000 + Math.random() * 9000)}`,
         category: categories.length > 0 ? categories[0].name : "Men's Vitality & Stamina",
         category_id: categories.length > 0 ? categories[0].id : "cat-vitality",
@@ -635,8 +635,8 @@ Leafora Herbal Private Limited produces authentic classical Rasayana remedies fo
         description_images: [],
         highlights: [
           "100% Pure Standardized Ayurvedic Extracts",
-          "Non-Hormonal & Ayush Certified Formula",
-          "GMP Quality Manufactured & Clinically Tested",
+          "Non-Hormonal & Pure Herbal Formula",
+          "Laboratory Quality Tested & Standardized",
           "Visible Enduring Results with Zero Steroids",
         ],
         dosage:

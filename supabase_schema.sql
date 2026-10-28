@@ -242,8 +242,8 @@ VALUES
     'Josh 1000 is Leafora Herbal Private Limited''s flagship vitality formula designed for modern active men. Formulated with 100% pure standardized herbal extracts including Shuddha Shilajit, Ashwagandha, Safed Musli, and Kaunch Beej, it naturally restores stamina, revitalizes cellular ATP energy, reduces stress fatigue, and enhances physical vigor without steroids or side effects.',
     '[
         {"id": "sec-1", "type": "heading", "title": "Triple-Action Male Performance & Vigour Formula"},
-        {"id": "sec-2", "type": "text", "content": "Crafted according to authentic Charaka Samhita Rasayana principles, Josh 1000 provides bioavailable bioactive withanolides and fulvic acid minerals to optimize endurance and vitality."},
-        {"id": "sec-3", "type": "callout", "title": "100% Natural, Ayush Certified & Safe", "content": "Zero steroids, zero synthetic stimulants, heavy-metal tested, and certified by the Ministry of Ayush. Safe for long-term daily consumption."}
+        {"id": "sec-2", "type": "text", "content": "Crafted with pure herbal extracts, Josh 1000 provides bioavailable bioactive withanolides and fulvic acid minerals to optimize endurance and vitality."},
+        {"id": "sec-3", "type": "callout", "title": "100% Natural, Lab Tested & Safe", "content": "Zero steroids, zero synthetic stimulants, heavy-metal tested, and formulated with 100% pure herbs. Safe for long-term daily consumption."}
     ]'::jsonb,
     ARRAY[]::TEXT[],
     ARRAY['/products/josh-1000.jpg'],
@@ -251,7 +251,7 @@ VALUES
         'Boosts physical stamina and fights daily fatigue',
         'Enhances natural vigor, endurance and strength',
         'Standardized Ashwagandha, Shuddha Shilajit & Safed Musli',
-        'Non-hormonal, 100% Ayurvedic & Ayush Certified',
+        'Non-hormonal, 100% Ayurvedic & Pure Herbal',
         '30 Concentrated vegetarian capsules'
     ],
     'Take 1 capsule twice daily with warm milk or water, preferably 30 minutes after meals. Consistent usage for 60-90 days gives optimal enduring results.',
@@ -292,7 +292,7 @@ VALUES
         'Fast-acting topical formula boosts blood flow and sensitivity',
         'Internal capsules build long-lasting stamina and endurance',
         'Non-greasy, pleasant natural herbal aroma',
-        'Clinically tested Ayush certified botanical ingredients'
+        'Clinically tested 100% pure botanical ingredients'
     ],
     'Capsules: Take 1 capsule morning and night with water or milk. Oil: Massage 5 to 7 drops gently once daily at night. Safe for consistent daily use.',
     '[
@@ -370,7 +370,7 @@ VALUES
         'Balances HbA1c levels and prevents post-meal energy slumps',
         'Relieves nerve numbness, burning sensation in hands and feet',
         'Protects renal and cardiovascular health from sugar oxidation',
-        'Net weight 200g, Ayush certified and 100% vegetarian'
+        'Net weight 200g, lab-tested and 100% vegetarian'
     ],
     'Take 1 level scoop (approx. 5g) with lukewarm water twice daily before meals.',
     '[

@@ -44,7 +44,7 @@ const EXPERTS: ExpertVideo[] = [
   {
     title: "Patient Recovery & Safety Evaluation",
     doctor: "Nidhi Deolekar",
-    role: "Holistic Ayush Health Advisor",
+    role: "Holistic Ayurvedic Health Advisor",
     thumbnail: "https://heightveda.com/wp-content/uploads/2026/09/Height-Veda_Website-Thumbnail2-1.webp",
     videoUrl: "https://heightveda.com/wp-content/uploads/2026/09/Nidhi-Deolekar-Reel-In-Square-Format1-1.mp4",
   },
@@ -69,13 +69,13 @@ export function ExpertsView() {
         <div className="text-center mb-12">
           <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider text-emerald-900 bg-emerald-100/80 border border-emerald-300">
             <Award className="w-3.5 h-3.5 text-emerald-700" />
-            <span>Clinical Insights &amp; Doctor Opinions</span>
+            <span>Herbal Insights &amp; Expert Opinions</span>
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mt-3 tracking-tight">
             Ayurvedic Experts <span className="text-gradient-green">Viewpoint</span>
           </h2>
           <p className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto mt-2 font-medium">
-            Watch verified Ayurvedic doctors and wellness experts explain the science behind Leafora Herbal Private Limited&apos;s natural formulations.
+            Watch verified Ayurvedic wellness specialists explain the science behind Leafora Herbal Private Limited&apos;s natural formulations.
           </p>
         </div>
 

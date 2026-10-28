@@ -163,11 +163,11 @@ export function HowItWorks() {
           </div>
         </div>
 
-        {/* Free Ayush Doctor Consultation Box */}
+        {/* Free Herbal Wellness Consultation Box */}
         <div className="rounded-3xl bg-[#faf8f4] border border-amber-300/80 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
           <div className="space-y-1.5 text-center md:text-left">
             <span className="text-xs font-black uppercase tracking-wider text-amber-800 bg-amber-100 px-3 py-1 rounded-full">
-              Free Ayush Consultation
+              Free Herbal Consultation
             </span>
             <h4 className="text-xl sm:text-2xl font-black text-gray-900">
               Need Personalized Dosage Advice?
@@ -182,7 +182,7 @@ export function HowItWorks() {
               href="tel:+918630552164"
               className="py-3 px-6 rounded-2xl bg-[#0c2415] hover:bg-[#06170d] text-[#fbeea4] font-black text-xs sm:text-sm text-center shadow-md transition flex items-center justify-center gap-2"
             >
-              <span>Call Doctor: +91 8630552164</span>
+              <span>Call Helpline: +91 8630552164</span>
             </a>
             <Link
               href="/#products-sec"

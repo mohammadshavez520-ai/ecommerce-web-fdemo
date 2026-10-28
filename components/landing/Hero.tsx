@@ -27,7 +27,7 @@ const HERO_PRODUCTS = [
     price: 899,
     originalPrice: 2999,
     image: "/products/josh-1000.jpg",
-    highlights: ["Shilajit & Ashwagandha", "Boosts Physical Stamina", "Non-Hormonal & Ayush Certified"],
+    highlights: ["Shilajit & Ashwagandha", "Boosts Physical Stamina", "Non-Hormonal & 100% Herbal"],
     color: "from-amber-500/20 to-emerald-900/10",
   },
   {
@@ -89,9 +89,9 @@ export function Hero() {
             <Flame className="w-3.5 h-3.5 text-red-600 fill-red-600" />
             <span>Flat 70% Off Today</span>
           </div>
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-100/80 border border-amber-300 text-amber-900 text-xs font-black uppercase tracking-wider">
-            <Award className="w-3.5 h-3.5 text-amber-700" />
-            <span>Ayush &amp; GMP Certified</span>
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-100/80 border border-emerald-300 text-emerald-900 text-xs font-black uppercase tracking-wider">
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
+            <span>100% Pure Botanical Extracts</span>
           </div>
         </div>
 
@@ -149,7 +149,7 @@ export function Hero() {
                 </div>
 
                 <div className="absolute top-3 right-3 z-20 px-2.5 py-1 rounded-xl bg-emerald-900/80 backdrop-blur-md text-emerald-200 font-bold text-[10px]">
-                  Ayush Approved
+                  100% Lab Tested
                 </div>
 
                 <img
@@ -259,8 +259,8 @@ export function Hero() {
               <Award className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-xs sm:text-sm font-black text-gray-900">Ayush Certified</h4>
-              <p className="text-[11px] text-gray-500">GMP tested &amp; certified lab standard</p>
+              <h4 className="text-xs sm:text-sm font-black text-gray-900">Lab-Tested Purity</h4>
+              <p className="text-[11px] text-gray-500">Rigorous laboratory quality standards</p>
             </div>
           </div>
 

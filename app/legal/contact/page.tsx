@@ -53,7 +53,7 @@ export default function ContactGrievancePage() {
         </h1>
 
         <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-          At <strong>Leafora Herbal Private Limited</strong>, our verified Ayush consultants and customer service specialists are committed to resolving your queries swiftly and transparently. Contact our direct telephone helpline at <strong>+91 8630552164</strong> or submit a callback ticket below.
+          At <strong>Leafora Herbal Private Limited</strong>, our verified wellness consultants and customer service specialists are committed to resolving your queries swiftly and transparently. Contact our direct telephone helpline at <strong>+91 8630552164</strong> or submit a callback ticket below.
         </p>
       </div>
 
@@ -127,7 +127,7 @@ export default function ContactGrievancePage() {
           </div>
           <div className="pt-4 mt-4 border-t border-amber-100 flex items-center gap-1.5 text-xs font-bold text-amber-900">
             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-            <span>Ayush Doctors On-Call</span>
+            <span>Wellness Advisors On-Call</span>
           </div>
         </div>
       </div>
@@ -233,7 +233,7 @@ export default function ContactGrievancePage() {
                 className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 bg-white font-medium focus:ring-2 focus:ring-emerald-600 focus:outline-none"
               >
                 <option value="Order Support">Order Tracking &amp; Delivery Support</option>
-                <option value="Dosage Advice">Free Ayush Doctor Dosage Advice</option>
+                <option value="Dosage Advice">Free Herbal Dosage Advice</option>
                 <option value="Replacement Request">Replacement or Damage Claim</option>
                 <option value="Order Cancellation">Order Cancellation Request</option>
                 <option value="General Inquiry">General Product Inquiry</option>

@@ -201,7 +201,7 @@ export function Ingredients() {
 
                 <div className="pt-4 mt-4 border-t border-gray-100 flex items-center justify-between text-[11px] font-bold text-gray-500">
                   <span className="flex items-center gap-1 text-emerald-800">
-                    <Award className="w-3.5 h-3.5" /> Ayush Tested
+                    <Award className="w-3.5 h-3.5" /> Lab Tested
                   </span>
                   <span>Non-Toxic</span>
                 </div>

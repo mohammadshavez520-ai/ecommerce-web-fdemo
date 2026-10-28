@@ -79,7 +79,7 @@ export function ProductsSection({ initialProducts }: ProductsSectionProps) {
           </h2>
 
           <p className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto mt-2 font-medium">
-            Discover our time-tested clinical remedies. Ethically crafted with 100% natural herbs, zero chemicals, and backed by certified Ayush standards.
+            Discover our time-tested herbal remedies. Ethically crafted with 100% natural herbs, zero chemicals, and backed by stringent quality testing.
           </p>
 
           {/* Category Filter Pills */}
