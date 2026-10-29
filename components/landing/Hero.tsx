@@ -200,13 +200,17 @@ export function Hero() {
 
               {/* Dual Action CTAs */}
               <div className="flex flex-col sm:flex-row gap-3 pt-3">
-                <Link
-                  href={`/checkout?productId=${activeProduct.id}`}
-                  className="gold-shimmer-btn flex-1 py-3.5 px-6 rounded-2xl text-white font-black text-sm text-center shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
+                <button
+                  type="button"
+                  data-fastrr-buy
+                  data-product-id={activeProduct.id}
+                  data-variant-id={`${activeProduct.id}-default`}
+                  data-quantity="1"
+                  className="gold-shimmer-btn flex-1 py-3.5 px-6 rounded-2xl text-white font-black text-sm text-center shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <span>ORDER NOW · CASH ON DELIVERY</span>
                   <ArrowRight className="w-4 h-4" />
-                </Link>
+                </button>
 
                 <Link
                   href={`/products/${activeProduct.id}`}

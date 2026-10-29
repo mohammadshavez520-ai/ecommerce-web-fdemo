@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Leafora Herbal Private Limited - Healing Naturally",
@@ -55,6 +56,31 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-[#fdfbf7] text-[#111827] antialiased">
         {children}
+
+        {/*
+          ──────────────────────────────────────────────────────────────────
+          Shiprocket Checkout (fastrr) Widget
+          Replace YOUR_SHIPROCKET_APP_ID below with the App ID / Channel Key
+          from your Shiprocket Panel →  Settings → Integrations →
+          Shiprocket Checkout → Custom Integration.
+          ──────────────────────────────────────────────────────────────────
+        */}
+        <Script
+          id="shiprocket-checkout"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.fastrr_config = {
+                app_id: "${process.env.NEXT_PUBLIC_SHIPROCKET_APP_ID || 'YOUR_SHIPROCKET_APP_ID'}",
+                environment: "production"
+              };
+            `,
+          }}
+        />
+        <Script
+          src="https://fastrr-boost-ui.pickrr.com/assets/js/fastrr.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

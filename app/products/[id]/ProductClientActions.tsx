@@ -1,17 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 import { ShoppingCart, ShoppingBag, ArrowRight } from "lucide-react";
 import { Product } from "@/lib/types";
 
 export function ProductClientActions({ product }: { product: Product }) {
-  const router = useRouter();
   const [quantity, setQuantity] = useState(1);
-
-  const handleBuyNow = () => {
-    router.push(`/checkout?productId=${product.id}&quantity=${quantity}`);
-  };
 
   return (
     <div className="space-y-4">
@@ -37,11 +31,14 @@ export function ProductClientActions({ product }: { product: Product }) {
         </div>
       </div>
 
-      {/* Buttons */}
+      {/* Buttons — both trigger Shiprocket Checkout widget */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
         <button
           type="button"
-          onClick={handleBuyNow}
+          data-fastrr-buy
+          data-product-id={product.id}
+          data-variant-id={`${product.id}-default`}
+          data-quantity={String(quantity)}
           className="w-full py-4 px-6 rounded-2xl bg-[#16341f] hover:bg-[#0f2415] text-white font-extrabold text-base tracking-wide shadow-xl hover:shadow-2xl transition flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5"
         >
           <ShoppingBag className="w-5 h-5 text-emerald-400" />
@@ -51,7 +48,10 @@ export function ProductClientActions({ product }: { product: Product }) {
 
         <button
           type="button"
-          onClick={handleBuyNow}
+          data-fastrr-buy
+          data-product-id={product.id}
+          data-variant-id={`${product.id}-default`}
+          data-quantity={String(quantity)}
           className="w-full py-4 px-6 rounded-2xl bg-emerald-50 hover:bg-emerald-100 text-emerald-900 font-extrabold text-base border-2 border-emerald-600/40 transition flex items-center justify-center gap-2 cursor-pointer"
         >
           <ShoppingCart className="w-5 h-5 text-emerald-700" />

@@ -2,19 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import {
   ShoppingBag,
-  Eye,
   Sparkles,
   Flame,
   Star,
-  CheckCircle,
-  Truck,
-  ShieldCheck,
   Zap,
   Activity,
-  ArrowRight
 } from "lucide-react";
 import { Product } from "@/lib/types";
 
@@ -23,7 +17,6 @@ interface ProductsSectionProps {
 }
 
 export function ProductsSection({ initialProducts }: ProductsSectionProps) {
-  const router = useRouter();
   const [products, setProducts] = useState<Product[]>(initialProducts || []);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
@@ -58,11 +51,6 @@ export function ProductsSection({ initialProducts }: ProductsSectionProps) {
     }
     return true;
   });
-
-  const handleBuyNow = (productId: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    router.push(`/checkout?productId=${productId}`);
-  };
 
   return (
     <section className="py-14 sm:py-20 md:py-24 bg-[#fbf9f5] border-b border-gray-100" id="products-sec">
@@ -121,103 +109,92 @@ export function ProductsSection({ initialProducts }: ProductsSectionProps) {
 
         {/* Product Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch mb-14">
-          {filteredProducts.map((product) => {
-            return (
-              <div
-                key={product.id}
-                onClick={() => router.push(`/products/${product.id}`)}
-                className="relative flex flex-col justify-between rounded-3xl bg-white border border-gray-200/90 shadow-sm hover:shadow-2xl hover:border-emerald-500/60 transition-all duration-300 group cursor-pointer overflow-hidden p-5"
-              >
-                {/* 70% OFF Ribbon Top-Right */}
-                <div className="absolute top-4 right-4 z-20 px-2.5 py-1 rounded-xl bg-red-600 text-white font-black text-xs shadow-md flex items-center gap-1">
-                  <Flame className="w-3.5 h-3.5 fill-current" />
-                  <span>70% OFF</span>
+          {filteredProducts.map((product) => (
+            <div
+              key={product.id}
+              className="relative flex flex-col justify-between rounded-3xl bg-white border border-gray-200/90 shadow-sm hover:shadow-2xl hover:border-emerald-500/60 transition-all duration-300 group overflow-hidden p-5"
+            >
+              {/* 70% OFF Ribbon */}
+              <div className="absolute top-4 right-4 z-20 px-2.5 py-1 rounded-xl bg-red-600 text-white font-black text-xs shadow-md flex items-center gap-1">
+                <Flame className="w-3.5 h-3.5 fill-current" />
+                <span>70% OFF</span>
+              </div>
+
+              {/* Top: Image & Badge */}
+              <div>
+                <div className="relative w-full aspect-square rounded-2xl bg-gradient-to-b from-gray-50 to-gray-100/60 p-3 mb-4 flex items-center justify-center overflow-hidden border border-gray-100">
+                  <img
+                    src={product.image_url}
+                    alt={product.name}
+                    className="w-full h-full object-contain group-hover:scale-108 transition-transform duration-500 drop-shadow-md"
+                  />
                 </div>
 
-                {/* Top: Image & Badge */}
-                <div>
-                  <div className="relative w-full aspect-square rounded-2xl bg-gradient-to-b from-gray-50 to-gray-100/60 p-3 mb-4 flex items-center justify-center overflow-hidden border border-gray-100">
-                    <img
-                      src={product.image_url}
-                      alt={product.name}
-                      className="w-full h-full object-contain group-hover:scale-108 transition-transform duration-500 drop-shadow-md"
-                    />
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[11px] font-black uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                    {product.category || "Ayurvedic"}
+                  </span>
+                  <div className="flex items-center gap-1 text-amber-500 text-xs font-black">
+                    <Star className="w-3.5 h-3.5 fill-current" />
+                    <span>4.9</span>
+                    <span className="text-gray-400 font-normal text-[11px]">(3.4k)</span>
                   </div>
-
-                  {/* Category Pill & Rating */}
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-[11px] font-black uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                      {product.category || "Ayurvedic"}
-                    </span>
-
-                    <div className="flex items-center gap-1 text-amber-500 text-xs font-black">
-                      <Star className="w-3.5 h-3.5 fill-current" />
-                      <span>4.9</span>
-                      <span className="text-gray-400 font-normal text-[11px]">(3.4k)</span>
-                    </div>
-                  </div>
-
-                  {/* Product Title */}
-                  <h3 className="text-lg font-black text-gray-900 group-hover:text-emerald-800 transition line-clamp-1">
-                    {product.name}
-                  </h3>
-
-                  {/* Tagline */}
-                  <p className="text-xs text-gray-500 mt-1 line-clamp-2 leading-relaxed">
-                    {product.tagline}
-                  </p>
-
-                  {/* Herbal Ingredients Preview Chips */}
-                  {product.ingredients_list && product.ingredients_list.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 mt-3">
-                      {product.ingredients_list.slice(0, 3).map((ing, i) => (
-                        <span
-                          key={i}
-                          className="px-2 py-0.5 rounded-md bg-gray-100 text-[10px] font-bold text-gray-700"
-                        >
-                          {ing.name}
-                        </span>
-                      ))}
-                    </div>
-                  )}
                 </div>
 
-                {/* Bottom: Pricing & Buy Buttons */}
-                <div className="pt-4 mt-4 border-t border-gray-100">
-                  <div className="flex items-baseline justify-between mb-3">
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-2xl font-black text-[#0f3d23]">
-                        ₹{product.price}
-                      </span>
-                      <span className="text-xs text-gray-400 line-through font-bold">
-                        ₹{product.original_price}
-                      </span>
-                    </div>
-                    <span className="text-[11px] font-black text-red-600 bg-red-50 px-2 py-0.5 rounded-full">
-                      Save ₹{product.save_amount}
-                    </span>
-                  </div>
+                <h3 className="text-lg font-black text-gray-900 group-hover:text-emerald-800 transition line-clamp-1">
+                  {product.name}
+                </h3>
+                <p className="text-xs text-gray-500 mt-1 line-clamp-2 leading-relaxed">
+                  {product.tagline}
+                </p>
 
-                  <div className="space-y-2">
-                    <button
-                      onClick={(e) => handleBuyNow(product.id, e)}
-                      className="gold-shimmer-btn w-full py-3 rounded-2xl text-white font-black text-xs sm:text-sm shadow-md hover:shadow-lg transition flex items-center justify-center gap-2 cursor-pointer"
-                    >
-                      <ShoppingBag className="w-4 h-4 text-[#fbeea4]" />
-                      <span>BUY NOW · COD</span>
-                    </button>
-
-                    <Link
-                      href={`/products/${product.id}`}
-                      className="w-full py-2 rounded-xl text-gray-600 hover:text-emerald-800 hover:bg-emerald-50 text-xs font-bold text-center block transition"
-                    >
-                      View Formula Details →
-                    </Link>
+                {product.ingredients_list && product.ingredients_list.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 mt-3">
+                    {product.ingredients_list.slice(0, 3).map((ing, i) => (
+                      <span key={i} className="px-2 py-0.5 rounded-md bg-gray-100 text-[10px] font-bold text-gray-700">
+                        {ing.name}
+                      </span>
+                    ))}
                   </div>
+                )}
+              </div>
+
+              {/* Bottom: Pricing & Buy Buttons */}
+              <div className="pt-4 mt-4 border-t border-gray-100">
+                <div className="flex items-baseline justify-between mb-3">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-2xl font-black text-[#0f3d23]">₹{product.price}</span>
+                    <span className="text-xs text-gray-400 line-through font-bold">₹{product.original_price}</span>
+                  </div>
+                  <span className="text-[11px] font-black text-red-600 bg-red-50 px-2 py-0.5 rounded-full">
+                    Save ₹{product.save_amount}
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  {/* Shiprocket Checkout trigger */}
+                  <button
+                    type="button"
+                    data-fastrr-buy
+                    data-product-id={product.id}
+                    data-variant-id={`${product.id}-default`}
+                    data-quantity="1"
+                    className="gold-shimmer-btn w-full py-3 rounded-2xl text-white font-black text-xs sm:text-sm shadow-md hover:shadow-lg transition flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <ShoppingBag className="w-4 h-4 text-[#fbeea4]" />
+                    <span>BUY NOW · COD</span>
+                  </button>
+
+                  <Link
+                    href={`/products/${product.id}`}
+                    className="w-full py-2 rounded-xl text-gray-600 hover:text-emerald-800 hover:bg-emerald-50 text-xs font-bold text-center block transition"
+                  >
+                    View Formula Details →
+                  </Link>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
 
         {/* Dual Solutions Spotlight Banners */}
@@ -250,12 +227,17 @@ export function ProductsSection({ initialProducts }: ProductsSectionProps) {
                 <span className="block text-xs text-amber-300 font-bold">Limited Time 70% Discount</span>
                 <span className="text-xl font-black text-white">Starting from ₹899</span>
               </div>
-              <Link
-                href="/checkout?productId=prod-josh-1000"
-                className="px-5 py-2.5 rounded-full bg-[#d4af37] hover:bg-[#b89228] text-gray-950 font-black text-xs sm:text-sm transition shadow-md"
+              {/* Shiprocket Checkout trigger */}
+              <button
+                type="button"
+                data-fastrr-buy
+                data-product-id="prod-josh-1000"
+                data-variant-id="prod-josh-1000-default"
+                data-quantity="1"
+                className="px-5 py-2.5 rounded-full bg-[#d4af37] hover:bg-[#b89228] text-gray-950 font-black text-xs sm:text-sm transition shadow-md cursor-pointer"
               >
                 Order Men&apos;s Kit
-              </Link>
+              </button>
             </div>
           </div>
 
@@ -287,12 +269,17 @@ export function ProductsSection({ initialProducts }: ProductsSectionProps) {
                 <span className="block text-xs text-emerald-300 font-bold">Limited Time 70% Discount</span>
                 <span className="text-xl font-black text-white">Starting from ₹799</span>
               </div>
-              <Link
-                href="/checkout?productId=prod-stop-sugar"
-                className="px-5 py-2.5 rounded-full bg-emerald-400 hover:bg-emerald-300 text-emerald-950 font-black text-xs sm:text-sm transition shadow-md"
+              {/* Shiprocket Checkout trigger */}
+              <button
+                type="button"
+                data-fastrr-buy
+                data-product-id="prod-stop-sugar"
+                data-variant-id="prod-stop-sugar-default"
+                data-quantity="1"
+                className="px-5 py-2.5 rounded-full bg-emerald-400 hover:bg-emerald-300 text-emerald-950 font-black text-xs sm:text-sm transition shadow-md cursor-pointer"
               >
                 Order Sugar Kit
-              </Link>
+              </button>
             </div>
           </div>
         </div>

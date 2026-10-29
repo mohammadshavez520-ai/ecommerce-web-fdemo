@@ -279,7 +279,6 @@ export function ProductDetailsClient({
   product,
   allProducts,
 }: ProductDetailsClientProps) {
-  const router = useRouter();
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState(product.image_url);
   const [activeTab, setActiveTab] = useState<"benefits" | "ingredients" | "dosage" | "reviews">("benefits");
@@ -295,10 +294,6 @@ export function ProductDetailsClient({
     product.images && product.images.length > 0
       ? product.images
       : [product.image_url].filter(Boolean);
-
-  const handleBuyNow = () => {
-    router.push(`/checkout?productId=${product.id}&quantity=${quantity}`);
-  };
 
   const handleLikeReview = (reviewId: string) => {
     setReviews((prev) =>
@@ -514,9 +509,13 @@ export function ProductDetailsClient({
 
             {/* Action Buttons */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+              {/* Shiprocket Checkout trigger — opens fastrr 1-click checkout */}
               <button
                 type="button"
-                onClick={handleBuyNow}
+                data-fastrr-buy
+                data-product-id={product.id}
+                data-variant-id={`${product.id}-default`}
+                data-quantity={String(quantity)}
                 className="w-full py-3.5 px-5 rounded-2xl bg-[#16341f] hover:bg-[#0f2415] text-white font-bold text-sm tracking-wide shadow-md hover:shadow-lg transition flex items-center justify-center gap-2 cursor-pointer active:scale-98 transform hover:-translate-y-0.5"
               >
                 <ShoppingBag className="w-4 h-4 text-emerald-400" strokeWidth={2.2} />
@@ -921,7 +920,10 @@ export function ProductDetailsClient({
                 </button>
                 <button
                   type="button"
-                  onClick={handleBuyNow}
+                  data-fastrr-buy
+                  data-product-id={product.id}
+                  data-variant-id={`${product.id}-default`}
+                  data-quantity="1"
                   className="py-2.5 px-5 rounded-xl bg-[#16341f] text-white font-bold text-xs shadow-md hover:bg-[#0f2415] transition cursor-pointer text-center"
                 >
                   Buy Now &amp; Try Risk-Free
@@ -1237,7 +1239,10 @@ export function ProductDetailsClient({
           {/* Primary CTA Button */}
           <button
             type="button"
-            onClick={handleBuyNow}
+            data-fastrr-buy
+            data-product-id={product.id}
+            data-variant-id={`${product.id}-default`}
+            data-quantity={String(quantity)}
             className="flex-1 h-11 px-3.5 rounded-xl bg-[#16341f] hover:bg-[#0f2415] active:scale-95 text-white font-bold text-xs sm:text-sm tracking-wide shadow-md flex items-center justify-center gap-1.5 cursor-pointer transition transform hover:-translate-y-0.5"
           >
             <ShoppingBag className="w-4 h-4 text-emerald-400 shrink-0" strokeWidth={2.2} />
