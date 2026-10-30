@@ -16,6 +16,7 @@ import {
   Activity,
   Heart
 } from "lucide-react";
+import { openShiprocketCheckout } from "@/lib/shiprocket-client";
 
 const HERO_PRODUCTS = [
   {
@@ -206,6 +207,7 @@ export function Hero() {
                   data-product-id={activeProduct.id}
                   data-variant-id={`${activeProduct.id}-default`}
                   data-quantity="1"
+                  onClick={(e) => openShiprocketCheckout(e, activeProduct.id, 1)}
                   className="gold-shimmer-btn flex-1 py-3.5 px-6 rounded-2xl text-white font-black text-sm text-center shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <span>ORDER NOW · CASH ON DELIVERY</span>

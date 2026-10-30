@@ -47,6 +47,7 @@ import {
 } from "lucide-react";
 import { Product } from "@/lib/types";
 import { RichMarkdownView } from "@/components/admin/RichMarkdownView";
+import { openShiprocketCheckout } from "@/lib/shiprocket-client";
 
 interface ProductDetailsClientProps {
   product: Product;
@@ -516,6 +517,7 @@ export function ProductDetailsClient({
                 data-product-id={product.id}
                 data-variant-id={`${product.id}-default`}
                 data-quantity={String(quantity)}
+                onClick={(e) => openShiprocketCheckout(e, product.id, quantity)}
                 className="w-full py-3.5 px-5 rounded-2xl bg-[#16341f] hover:bg-[#0f2415] text-white font-bold text-sm tracking-wide shadow-md hover:shadow-lg transition flex items-center justify-center gap-2 cursor-pointer active:scale-98 transform hover:-translate-y-0.5"
               >
                 <ShoppingBag className="w-4 h-4 text-emerald-400" strokeWidth={2.2} />
@@ -924,6 +926,7 @@ export function ProductDetailsClient({
                   data-product-id={product.id}
                   data-variant-id={`${product.id}-default`}
                   data-quantity="1"
+                  onClick={(e) => openShiprocketCheckout(e, product.id, 1)}
                   className="py-2.5 px-5 rounded-xl bg-[#16341f] text-white font-bold text-xs shadow-md hover:bg-[#0f2415] transition cursor-pointer text-center"
                 >
                   Buy Now &amp; Try Risk-Free
@@ -1243,6 +1246,7 @@ export function ProductDetailsClient({
             data-product-id={product.id}
             data-variant-id={`${product.id}-default`}
             data-quantity={String(quantity)}
+            onClick={(e) => openShiprocketCheckout(e, product.id, quantity)}
             className="flex-1 h-11 px-3.5 rounded-xl bg-[#16341f] hover:bg-[#0f2415] active:scale-95 text-white font-bold text-xs sm:text-sm tracking-wide shadow-md flex items-center justify-center gap-1.5 cursor-pointer transition transform hover:-translate-y-0.5"
           >
             <ShoppingBag className="w-4 h-4 text-emerald-400 shrink-0" strokeWidth={2.2} />

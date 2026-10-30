@@ -11,6 +11,7 @@ import {
   Activity,
 } from "lucide-react";
 import { Product } from "@/lib/types";
+import { openShiprocketCheckout } from "@/lib/shiprocket-client";
 
 interface ProductsSectionProps {
   initialProducts?: Product[];
@@ -179,6 +180,7 @@ export function ProductsSection({ initialProducts }: ProductsSectionProps) {
                     data-product-id={product.id}
                     data-variant-id={`${product.id}-default`}
                     data-quantity="1"
+                    onClick={(e) => openShiprocketCheckout(e, product.id, 1)}
                     className="gold-shimmer-btn w-full py-3 rounded-2xl text-white font-black text-xs sm:text-sm shadow-md hover:shadow-lg transition flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <ShoppingBag className="w-4 h-4 text-[#fbeea4]" />
@@ -234,6 +236,7 @@ export function ProductsSection({ initialProducts }: ProductsSectionProps) {
                 data-product-id="prod-josh-1000"
                 data-variant-id="prod-josh-1000-default"
                 data-quantity="1"
+                onClick={(e) => openShiprocketCheckout(e, "prod-josh-1000", 1)}
                 className="px-5 py-2.5 rounded-full bg-[#d4af37] hover:bg-[#b89228] text-gray-950 font-black text-xs sm:text-sm transition shadow-md cursor-pointer"
               >
                 Order Men&apos;s Kit
@@ -276,6 +279,7 @@ export function ProductsSection({ initialProducts }: ProductsSectionProps) {
                 data-product-id="prod-stop-sugar"
                 data-variant-id="prod-stop-sugar-default"
                 data-quantity="1"
+                onClick={(e) => openShiprocketCheckout(e, "prod-stop-sugar", 1)}
                 className="px-5 py-2.5 rounded-full bg-emerald-400 hover:bg-emerald-300 text-emerald-950 font-black text-xs sm:text-sm transition shadow-md cursor-pointer"
               >
                 Order Sugar Kit

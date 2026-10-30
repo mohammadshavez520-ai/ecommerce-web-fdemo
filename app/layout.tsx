@@ -53,25 +53,36 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
           rel="stylesheet"
         />
+        {/* Shiprocket Checkout Stylesheet */}
+        <link
+          rel="stylesheet"
+          href="https://checkout-ui.shiprocket.com/assets/styles/shopify.css"
+        />
       </head>
       <body className="min-h-screen bg-[#fdfbf7] text-[#111827] antialiased">
         {children}
 
-        {/*
-          ──────────────────────────────────────────────────────────────────
-          Shiprocket Checkout (fastrr) Widget
-          Replace YOUR_SHIPROCKET_APP_ID below with the App ID / Channel Key
-          from your Shiprocket Panel →  Settings → Integrations →
-          Shiprocket Checkout → Custom Integration.
-          ──────────────────────────────────────────────────────────────────
-        */}
+        {/* Hidden seller domain required by Shiprocket checkout script */}
+        <input
+          type="hidden"
+          value="leaforaherbal.com"
+          id="sellerDomain"
+        />
+
+        {/* Official Shiprocket Checkout Script */}
         <Script
-          id="shiprocket-checkout"
+          src="https://checkout-ui.shiprocket.com/assets/js/channels/shopify.js"
+          strategy="afterInteractive"
+        />
+
+        {/* Fastrr configuration & script */}
+        <Script
+          id="shiprocket-checkout-fastrr"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.fastrr_config = {
-                app_id: "${process.env.NEXT_PUBLIC_SHIPROCKET_APP_ID || 'YOUR_SHIPROCKET_APP_ID'}",
+                app_id: "${process.env.NEXT_PUBLIC_SHIPROCKET_APP_ID || ''}",
                 environment: "production"
               };
             `,
