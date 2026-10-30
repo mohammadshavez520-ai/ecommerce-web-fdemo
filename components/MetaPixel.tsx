@@ -38,11 +38,7 @@ function PixelPageViewTracker({ pixelId }: { pixelId: string }) {
 }
 
 export function MetaPixel() {
-  const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
-
-  if (!pixelId) {
-    return null;
-  }
+  const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID || "1458915663970421";
 
   return (
     <>
