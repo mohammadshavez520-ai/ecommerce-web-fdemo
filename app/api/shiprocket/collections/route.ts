@@ -1,90 +1,67 @@
 /**
- * Shiprocket Checkout — Collections API
+ * Shiprocket Checkout — Fetch Collections API
  *
- * Endpoint  : GET /api/shiprocket/collections
- * Purpose   : Returns all product collections (categories) in the Shiprocket
- *             Checkout custom-integration schema so Shiprocket can organise
- *             products by collection during checkout upsell / cross-sell flows.
+ * Endpoint  : GET /api/shiprocket/collections?page=1&limit=100
+ * Reference : Shiprocket Postman Documenter (2sB34bL3ig) - Catalog APIs -> Fetch Collections
+ * Guide     : https://docs.google.com/document/d/1uEcKW0uPAldhKiFCqJbAQnAmBTP6Azvlt_Rcxu5BW_0
  *
- * Auth      : Bearer token validation via SHIPROCKET_CHECKOUT_SECRET_KEY.
- *             Shiprocket sends this key as:
- *               Authorization: Bearer <SHIPROCKET_CHECKOUT_SECRET_KEY>
- *
- * Ref       : https://documenter.getpostman.com/view/25617008/2sB34bL3ig
+ * Response Structure:
+ * {
+ *   "data": {
+ *     "total": 3,
+ *     "collections": [ ...Shopify/Shiprocket formatted collections... ]
+ *   }
+ * }
  */
 
 import { NextResponse } from "next/server";
 import { getCategories } from "@/lib/db";
+import { formatShiprocketCollection } from "@/lib/shiprocket-formatter";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
-// ── Auth helper ──────────────────────────────────────────────────────────────
-function isAuthorized(request: Request): boolean {
-  const secret = process.env.SHIPROCKET_CHECKOUT_SECRET_KEY;
-  if (!secret) {
-    // If no secret is configured, allow open access (useful during initial setup).
-    console.warn("[Shiprocket] SHIPROCKET_CHECKOUT_SECRET_KEY is not set — endpoint is open.");
-    return true;
-  }
-  const authHeader = request.headers.get("authorization") || "";
-  const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7).trim() : "";
-  return token === secret;
-}
-
-// ── Shape a category into Shiprocket's expected collection schema ─────────────
-function toShiprocketCollection(c: {
-  id: string;
-  name: string;
-  slug: string;
-  description?: string;
-  image_url?: string;
-  product_count?: number;
-  created_at?: string;
-}) {
-  return {
-    id: c.id,
-    title: c.name,
-    handle: c.slug || c.id,
-    description: c.description || "",
-    image: c.image_url || null,
-    products_count: c.product_count ?? 0,
-    published_at: c.created_at || new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-  };
-}
-
-// ── Handler ───────────────────────────────────────────────────────────────────
 export async function GET(request: Request) {
-  if (!isAuthorized(request)) {
-    return NextResponse.json(
-      { success: false, error: "Unauthorized" },
-      { status: 401 }
-    );
-  }
-
   try {
-    const categories = await getCategories();
-    const collections = categories.map(toShiprocketCollection);
+    const { searchParams } = new URL(request.url);
+    const page = Math.max(1, Number(searchParams.get("page") || 1));
+    const limit = Math.min(250, Math.max(1, Number(searchParams.get("limit") || 100)));
+    const offset = (page - 1) * limit;
+
+    const allCategories = await getCategories();
+    const total = allCategories.length;
+    const paged = allCategories.slice(offset, offset + limit);
+
+    const formattedCollections = paged.map((c) => formatShiprocketCollection(c));
 
     return NextResponse.json(
       {
-        success: true,
-        collections,
-        count: collections.length,
+        data: {
+          total,
+          collections: formattedCollections,
+        },
       },
       {
         status: 200,
         headers: {
-          "Cache-Control": "no-store, no-cache, must-revalidate",
           "Content-Type": "application/json",
+          "Cache-Control": "no-store, no-cache, must-revalidate",
+          "Access-Control-Allow-Origin": "*",
         },
       }
     );
   } catch (error: unknown) {
     const msg = error instanceof Error ? error.message : "Internal server error";
     console.error("[Shiprocket Collections API] Error:", msg);
-    return NextResponse.json({ success: false, error: msg }, { status: 500 });
+    return NextResponse.json(
+      {
+        data: {
+          total: 0,
+          collections: [],
+        },
+        error: msg,
+      },
+      { status: 500 }
+    );
   }
 }
-
