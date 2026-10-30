@@ -48,6 +48,7 @@ import {
 import { Product } from "@/lib/types";
 import { RichMarkdownView } from "@/components/admin/RichMarkdownView";
 import { openShiprocketCheckout } from "@/lib/shiprocket-client";
+import { trackMetaEvent } from "@/components/MetaPixel";
 
 interface ProductDetailsClientProps {
   product: Product;
@@ -295,6 +296,17 @@ export function ProductDetailsClient({
     product.images && product.images.length > 0
       ? product.images
       : [product.image_url].filter(Boolean);
+
+  // Meta Pixel ViewContent event
+  React.useEffect(() => {
+    trackMetaEvent("ViewContent", {
+      content_name: product.name,
+      content_ids: [product.id],
+      content_type: "product",
+      value: product.price,
+      currency: "INR",
+    });
+  }, [product.id, product.name, product.price]);
 
   const handleLikeReview = (reviewId: string) => {
     setReviews((prev) =>

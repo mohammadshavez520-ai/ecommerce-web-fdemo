@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
+import { MetaPixel } from "@/components/MetaPixel";
 
 export const metadata: Metadata = {
   title: "Leafora Herbal Private Limited - Healing Naturally",
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     title: "Leafora Herbal Private Limited - Healing Naturally",
     description:
       "Natural Wellness & Ayurvedic Health Solutions. 100% Ayurvedic · Clinically Tested.",
-    url: "https://leaforaherbal.com",
+    url: "https://www.leaforaherbal.in",
     siteName: "Leafora Herbal Private Limited",
     images: [
       {
@@ -65,7 +66,7 @@ export default function RootLayout({
         {/* Hidden seller domain required by Shiprocket checkout script */}
         <input
           type="hidden"
-          value="leaforaherbal.com"
+          value="www.leaforaherbal.in"
           id="sellerDomain"
         />
 
@@ -75,27 +76,8 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
 
-        {/* Meta Pixel (Facebook Ads) Tracking */}
-        {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
-          <Script
-            id="meta-pixel-init"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-                !function(f,b,e,v,n,t,s)
-                {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-                n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-                if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-                n.queue=[];t=b.createElement(e);t.async=!0;
-                t.src=v;s=b.getElementsByTagName(e)[0];
-                s.parentNode.insertBefore(t,s)}(window, document,'script',
-                'https://connect.facebook.net/en_US/fbevents.js');
-                fbq('init', '${process.env.NEXT_PUBLIC_META_PIXEL_ID}');
-                fbq('track', 'PageView');
-              `,
-            }}
-          />
-        )}
+        {/* Meta Pixel (Facebook Ads) Global Tracking */}
+        <MetaPixel />
 
         {/* Fastrr configuration & script */}
         <Script

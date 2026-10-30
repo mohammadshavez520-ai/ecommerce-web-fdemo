@@ -42,7 +42,7 @@ export function calculateShiprocketHmac(secretKey: string, bodyString: string): 
  * Transforms an internal Product into the exact Shiprocket / Shopify Catalog JSON format
  * as specified in Shiprocket Postman Documenter (2sB34bL3ig) & Integration Guide.
  */
-export function formatShiprocketProduct(p: Product, baseUrl: string = "https://leaforaherbal.com") {
+export function formatShiprocketProduct(p: Product, baseUrl: string = "https://www.leaforaherbal.in") {
   const numericProductId = toNumericId(p.id);
   const numericVariantId = toNumericId(p.id, 10000000);
 
@@ -120,7 +120,7 @@ export function formatShiprocketProduct(p: Product, baseUrl: string = "https://l
  * Transforms an internal Category into the exact Shiprocket Collection format
  * as specified in Shiprocket Postman Documenter (2sB34bL3ig).
  */
-export function formatShiprocketCollection(c: Category, baseUrl: string = "https://leaforaherbal.com") {
+export function formatShiprocketCollection(c: Category, baseUrl: string = "https://www.leaforaherbal.in") {
   const numericCollectionId = toNumericId(c.id);
   const imageSrc = c.image_url || `${baseUrl}/logo.png`;
   const createdAt = c.created_at || new Date().toISOString();

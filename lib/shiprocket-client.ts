@@ -1,5 +1,7 @@
 "use client";
 
+import { trackMetaEvent } from "@/components/MetaPixel";
+
 declare global {
   interface Window {
     HeadlessCheckout?: {
@@ -45,11 +47,20 @@ export async function openShiprocketCheckout(
     }
 
     const token = data.token;
+    const fallbackUrl = typeof window !== "undefined" ? `${window.location.origin}/order-success` : "/order-success";
+
+    // Track Meta Ads InitiateCheckout Event
+    trackMetaEvent("InitiateCheckout", {
+      content_ids: [productId],
+      content_type: "product",
+      num_items: quantity,
+      currency: "INR",
+    });
 
     // Use official HeadlessCheckout object from shopify.js
     if (typeof window !== "undefined" && window.HeadlessCheckout && window.HeadlessCheckout.addToCart) {
       window.HeadlessCheckout.addToCart(event, token, {
-        fallbackUrl: `/order-success`,
+        fallbackUrl,
       });
       return;
     }
@@ -58,7 +69,7 @@ export async function openShiprocketCheckout(
     setTimeout(() => {
       if (typeof window !== "undefined" && window.HeadlessCheckout && window.HeadlessCheckout.addToCart) {
         window.HeadlessCheckout.addToCart(event, token, {
-          fallbackUrl: `/order-success`,
+          fallbackUrl,
         });
       } else {
         alert("Shiprocket Checkout script is loading. Please click Buy Now again in a moment.");

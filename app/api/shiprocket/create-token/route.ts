@@ -32,9 +32,17 @@ export async function POST(request: Request) {
     const quantity = Math.max(1, Number(body.quantity || 1));
     const variantId = body.variantId || String(toNumericId(productId, 10000000));
 
-    const siteUrl =
+    // Determine public site URL for redirect
+    const host = request.headers.get("x-forwarded-host") || request.headers.get("host");
+    const proto = request.headers.get("x-forwarded-proto") || "https";
+    const detectedOrigin = host ? `${proto}://${host}` : "";
+
+    const siteUrl = (
       process.env.NEXT_PUBLIC_SITE_URL ||
-      process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://leaforaherbal.com";
+      (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "") ||
+      detectedOrigin ||
+      "https://www.leaforaherbal.in"
+    ).replace(/\/$/, "");
 
     const payload = {
       cart_data: {
