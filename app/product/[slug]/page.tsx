@@ -8,10 +8,9 @@ import { StickyCallButton } from "@/components/landing/StickyCallButton";
 import { ArrowLeft } from "lucide-react";
 import { ProductDetailsClient } from "@/app/products/[id]/ProductDetailsClient";
 
-export async function generateStaticParams() {
-  const products = await getProducts();
-  return products.map((p) => ({ slug: p.slug || p.id }));
-}
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+export const dynamicParams = true;
 
 export default async function ProductDetailsPage({
   params,

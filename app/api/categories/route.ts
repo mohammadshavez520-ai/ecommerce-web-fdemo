@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { getCategories, createCategory } from "@/lib/db";
 import { isAdminAuthorized } from "@/lib/auth";
 
@@ -43,6 +44,12 @@ export async function POST(request: Request) {
       description: body.description ? String(body.description).trim() : "",
       image_url: body.image_url ? String(body.image_url).trim() : "",
     });
+
+    try {
+      revalidatePath("/");
+    } catch (e) {
+      // ignore
+    }
 
     return NextResponse.json({ success: true, category: newCategory }, { status: 201 });
   } catch (error: any) {

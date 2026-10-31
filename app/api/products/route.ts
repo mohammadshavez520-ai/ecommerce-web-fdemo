@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { getProducts, createProduct } from "@/lib/db";
 import { verifyAdminRequest } from "@/lib/auth";
 
@@ -90,6 +91,15 @@ export async function POST(request: Request) {
       category: body.category || "Men's Vitality & Stamina",
       category_id: body.category_id || undefined,
     });
+
+    try {
+      revalidatePath("/");
+      revalidatePath("/products");
+      revalidatePath(`/product/${newProduct.slug || newProduct.id}`);
+      revalidatePath("/product/[slug]", "page");
+    } catch (revError) {
+      console.warn("[revalidatePath] Cache purge non-fatal error:", revError);
+    }
 
     return NextResponse.json({ success: true, product: newProduct }, { status: 201 });
   } catch (error: any) {

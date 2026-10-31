@@ -11,6 +11,9 @@ import { Faqs } from "@/components/landing/Faqs";
 import { StickyCallButton } from "@/components/landing/StickyCallButton";
 import { Footer } from "@/components/landing/Footer";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default async function HomePage() {
   const products = await getProducts();
 
@@ -18,7 +21,7 @@ export default async function HomePage() {
     <div className="min-h-screen flex flex-col bg-[#fdfbf7]">
       <Header />
       <main className="flex-1">
-        <Hero />
+        <Hero initialProducts={products} />
         <ProductsSection initialProducts={products} />
         <About />
         <Ingredients />

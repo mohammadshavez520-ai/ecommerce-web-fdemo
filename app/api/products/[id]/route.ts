@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { getProductById, getProductBySlug, updateProduct, deleteProduct } from "@/lib/db";
 import { verifyAdminRequest } from "@/lib/auth";
 
@@ -106,6 +107,16 @@ export async function PUT(
       );
     }
 
+    try {
+      revalidatePath("/");
+      revalidatePath("/products");
+      revalidatePath(`/product/${updated.slug || updated.id}`);
+      revalidatePath("/product/[slug]", "page");
+      revalidatePath("/products/[id]", "page");
+    } catch (revError) {
+      console.warn("[revalidatePath] Cache purge non-fatal error:", revError);
+    }
+
     return NextResponse.json({ success: true, product: updated });
   } catch (error: any) {
     console.error(`[API] Failed to update product:`, error);
@@ -145,6 +156,15 @@ export async function DELETE(
         { success: false, error: `Product "${id}" not found or delete failed` },
         { status: 404 }
       );
+    }
+
+    try {
+      revalidatePath("/");
+      revalidatePath("/products");
+      revalidatePath("/product/[slug]", "page");
+      revalidatePath("/products/[id]", "page");
+    } catch (revError) {
+      console.warn("[revalidatePath] Cache purge non-fatal error:", revError);
     }
 
     return NextResponse.json({ success: true, message: `Product ${id} deleted successfully` });

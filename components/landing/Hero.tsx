@@ -17,14 +17,29 @@ import {
   Heart
 } from "lucide-react";
 import { openShiprocketCheckout } from "@/lib/shiprocket-client";
+import { Product } from "@/lib/types";
 
-const HERO_PRODUCTS = [
+interface HeroProductItem {
+  id: string;
+  name: string;
+  tagline: string;
+  category: string;
+  badge: string;
+  price: number;
+  originalPrice: number;
+  image: string;
+  highlights: string[];
+  color: string;
+  slug?: string;
+}
+
+const DEFAULT_HERO_PRODUCTS: HeroProductItem[] = [
   {
     id: "prod-josh-1000",
     name: "Josh 1000 Capsule",
     tagline: "Triple-Action Stamina, Energy & Male Vigour",
     category: "Men's Vitality",
-    badge: "🔥 70% OFF · Best Seller",
+    badge: "🔥 Best Seller",
     price: 899,
     originalPrice: 2999,
     image: "/products/josh-1000.jpg",
@@ -36,7 +51,7 @@ const HERO_PRODUCTS = [
     name: "Stop Sugar Powder",
     tagline: "मधुमेह विनाशक चूर्ण · Natural Blood Sugar Regulator",
     category: "Sugar & Diabetes",
-    badge: "🌿 70% OFF · Clinical Herbs",
+    badge: "🌿 Clinical Herbs",
     price: 799,
     originalPrice: 2699,
     image: "/products/stop-sugar.jpg",
@@ -48,7 +63,7 @@ const HERO_PRODUCTS = [
     name: "Time Master Combo",
     tagline: "80ml Topical Massage Oil + 60 Vitality Capsules",
     category: "Complete Regimen",
-    badge: "👑 70% OFF · Dual System",
+    badge: "👑 Dual System",
     price: 1499,
     originalPrice: 4999,
     image: "/products/time-master-combo.jpg",
@@ -60,7 +75,7 @@ const HERO_PRODUCTS = [
     name: "Diasure Herb Powder",
     tagline: "15 Potent Ayurvedic Herbs for Managing Glucose (200g)",
     category: "Metabolic Wellness",
-    badge: "⭐ 70% OFF · 15 Herb Synergy",
+    badge: "⭐ 15 Herb Synergy",
     price: 899,
     originalPrice: 2999,
     image: "/products/diasure-powder.jpg",
@@ -69,9 +84,48 @@ const HERO_PRODUCTS = [
   },
 ];
 
-export function Hero() {
+interface HeroProps {
+  initialProducts?: Product[];
+}
+
+export function Hero({ initialProducts }: HeroProps = {}) {
   const [activeIdx, setActiveIdx] = useState(0);
-  const activeProduct = HERO_PRODUCTS[activeIdx];
+
+  // Merge live database products dynamically with fallback metadata
+  const heroProducts: HeroProductItem[] = React.useMemo(() => {
+    if (!initialProducts || initialProducts.length === 0) {
+      return DEFAULT_HERO_PRODUCTS;
+    }
+
+    return DEFAULT_HERO_PRODUCTS.map((def) => {
+      const match = initialProducts.find(
+        (p) => p.id === def.id || p.slug === def.id || p.name.toLowerCase().includes(def.name.toLowerCase().split(" ")[0])
+      );
+      if (!match) return def;
+
+      const price = Number(match.price ?? def.price);
+      const originalPrice = Number(match.original_price ?? def.originalPrice);
+      const discountPct = originalPrice > price ? Math.round(((originalPrice - price) / originalPrice) * 100) : 0;
+
+      return {
+        ...def,
+        id: match.id || def.id,
+        name: match.name || def.name,
+        tagline: match.tagline || def.tagline,
+        price,
+        originalPrice,
+        image: match.image_url || (match.images && match.images[0]) || def.image,
+        badge: discountPct > 0 ? `🔥 ${discountPct}% OFF · Verified Formula` : def.badge,
+        highlights: (match.highlights && match.highlights.length > 0) ? match.highlights : def.highlights,
+        slug: match.slug || match.id,
+      };
+    });
+  }, [initialProducts]);
+
+  const activeProduct = heroProducts[activeIdx] || heroProducts[0];
+  const discountPercent = activeProduct.originalPrice > activeProduct.price
+    ? Math.round(((activeProduct.originalPrice - activeProduct.price) / activeProduct.originalPrice) * 100)
+    : 0;
 
   return (
     <section className="relative pt-8 pb-16 md:pt-14 md:pb-24 bg-gradient-to-b from-[#f5f8f5] via-[#fafbf9] to-white overflow-hidden border-b border-gray-100">
@@ -115,7 +169,7 @@ export function Hero() {
         <div className="max-w-5xl mx-auto rounded-3xl bg-white border border-gray-200/90 shadow-xl overflow-hidden">
           {/* Product Switcher Tabs */}
           <div className="bg-[#0b2416] p-2.5 sm:p-3 grid grid-cols-2 sm:grid-cols-4 gap-2 border-b border-emerald-950">
-            {HERO_PRODUCTS.map((prod, idx) => {
+            {heroProducts.map((prod, idx) => {
               const isActive = activeIdx === idx;
               return (
                 <button
@@ -143,11 +197,13 @@ export function Hero() {
             {/* Left: Product Image with Floating Discount Badges */}
             <div className="md:col-span-5 relative flex items-center justify-center">
               <div className="relative w-full max-w-[340px] aspect-square rounded-2xl bg-gradient-to-b from-gray-50 to-gray-100/70 p-4 border border-gray-200/70 shadow-inner flex items-center justify-center group">
-                {/* 70% OFF Corner Badge */}
-                <div className="absolute top-3 left-3 z-20 px-3 py-1.5 rounded-xl bg-red-600 text-white font-black text-xs tracking-wider shadow-md flex items-center gap-1">
-                  <Flame className="w-3.5 h-3.5 fill-current" />
-                  <span>70% OFF</span>
-                </div>
+                {/* Dynamic Discount Corner Badge */}
+                {discountPercent > 0 && (
+                  <div className="absolute top-3 left-3 z-20 px-3 py-1.5 rounded-xl bg-red-600 text-white font-black text-xs tracking-wider shadow-md flex items-center gap-1">
+                    <Flame className="w-3.5 h-3.5 fill-current" />
+                    <span>{discountPercent}% OFF</span>
+                  </div>
+                )}
 
                 <div className="absolute top-3 right-3 z-20 px-2.5 py-1 rounded-xl bg-emerald-900/80 backdrop-blur-md text-emerald-200 font-bold text-[10px]">
                   100% Lab Tested
@@ -181,12 +237,16 @@ export function Hero() {
                 <span className="text-3xl font-black text-[#0f3d23]">
                   ₹{activeProduct.price}
                 </span>
-                <span className="text-base text-gray-400 line-through font-bold">
-                  ₹{activeProduct.originalPrice}
-                </span>
-                <span className="px-2.5 py-1 rounded-lg bg-red-600 text-white font-extrabold text-xs">
-                  Save ₹{activeProduct.originalPrice - activeProduct.price} (70% OFF)
-                </span>
+                {activeProduct.originalPrice > activeProduct.price && (
+                  <span className="text-base text-gray-400 line-through font-bold">
+                    ₹{activeProduct.originalPrice}
+                  </span>
+                )}
+                {discountPercent > 0 && (
+                  <span className="px-2.5 py-1 rounded-lg bg-red-600 text-white font-extrabold text-xs">
+                    Save ₹{activeProduct.originalPrice - activeProduct.price} ({discountPercent}% OFF)
+                  </span>
+                )}
               </div>
 
               {/* Checklist Highlights */}
@@ -215,7 +275,7 @@ export function Hero() {
                 </button>
 
                 <Link
-                  href={`/products/${activeProduct.id}`}
+                  href={`/product/${activeProduct.slug || activeProduct.id}`}
                   className="py-3.5 px-5 rounded-2xl border-2 border-emerald-900 text-emerald-950 font-bold text-xs sm:text-sm text-center hover:bg-emerald-50 transition flex items-center justify-center gap-1.5"
                 >
                   <span>Formula Details</span>

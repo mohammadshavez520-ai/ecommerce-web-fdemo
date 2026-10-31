@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { getCategoryById, updateCategory, deleteCategory } from "@/lib/db";
 import { isAdminAuthorized } from "@/lib/auth";
 
@@ -74,6 +75,12 @@ export async function PUT(
       );
     }
 
+    try {
+      revalidatePath("/");
+    } catch (e) {
+      // ignore
+    }
+
     return NextResponse.json({ success: true, category: updated });
   } catch (error: any) {
     console.error("[API] Failed to update category:", error);
@@ -112,6 +119,12 @@ export async function DELETE(
         { success: false, error: `Category "${id}" not found or delete failed` },
         { status: 404 }
       );
+    }
+
+    try {
+      revalidatePath("/");
+    } catch (e) {
+      // ignore
     }
 
     return NextResponse.json({ success: true, message: `Category ${id} deleted successfully` });

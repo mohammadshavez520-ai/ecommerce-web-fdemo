@@ -22,17 +22,22 @@ export function ProductsSection({ initialProducts }: ProductsSectionProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   useEffect(() => {
-    if (!initialProducts || initialProducts.length === 0) {
-      fetch("/api/products")
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.success && data.products) {
-            setProducts(data.products);
-          }
-        })
-        .catch((err) => console.error("Failed to load products:", err));
+    if (initialProducts && initialProducts.length > 0) {
+      setProducts(initialProducts);
     }
   }, [initialProducts]);
+
+  // Keep client-side state freshly synced with database
+  useEffect(() => {
+    fetch(`/api/products?_t=${Date.now()}`, { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && Array.isArray(data.products) && data.products.length > 0) {
+          setProducts(data.products);
+        }
+      })
+      .catch((err) => console.error("Failed to sync products:", err));
+  }, []);
 
   const filteredProducts = products.filter((p) => {
     if (selectedCategory === "all") return true;
@@ -188,7 +193,7 @@ export function ProductsSection({ initialProducts }: ProductsSectionProps) {
                   </button>
 
                   <Link
-                    href={`/products/${product.id}`}
+                    href={`/product/${product.slug || product.id}`}
                     className="w-full py-2 rounded-xl text-gray-600 hover:text-emerald-800 hover:bg-emerald-50 text-xs font-bold text-center block transition"
                   >
                     View Formula Details →

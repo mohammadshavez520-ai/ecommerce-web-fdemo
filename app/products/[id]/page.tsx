@@ -1,10 +1,8 @@
 import { redirect, notFound } from "next/navigation";
 import { getProductById, getProductBySlug, getProducts, slugify } from "@/lib/db";
 
-export async function generateStaticParams() {
-  const products = await getProducts();
-  return products.map((p) => ({ id: p.id }));
-}
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export default async function LegacyProductPage({
   params,

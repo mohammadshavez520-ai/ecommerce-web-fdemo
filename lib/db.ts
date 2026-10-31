@@ -61,6 +61,19 @@ const memoryStore: MemoryStore = {
   admin_users: JSON.parse(JSON.stringify(INITIAL_ADMIN_USERS)),
 };
 
+function safePersistStore(): void {
+  try {
+    const fs = require("fs");
+    const path = require("path");
+    const storePath = path.join(process.cwd(), "data", "store.json");
+    if (fs.existsSync(storePath)) {
+      fs.writeFileSync(storePath, JSON.stringify(memoryStore, null, 2), "utf-8");
+    }
+  } catch {
+    // Read-only serverless platforms (e.g. Vercel) silently ignore
+  }
+}
+
 // Helper: Normalize product record from Supabase / Memory
 function normalizeProduct(p: any): Product {
   const price = Number(p.price || 0);
@@ -406,6 +419,7 @@ export async function createCategory(
   }
 
   memoryStore.categories.push(newCategory);
+  safePersistStore();
   return newCategory;
 }
 
@@ -443,6 +457,7 @@ export async function updateCategory(
     ...memoryStore.categories[idx],
     ...updates,
   };
+  safePersistStore();
   return memoryStore.categories[idx];
 }
 
@@ -459,6 +474,7 @@ export async function deleteCategory(id: string): Promise<boolean> {
 
   const initLen = memoryStore.categories.length;
   memoryStore.categories = memoryStore.categories.filter((c) => c.id !== id);
+  safePersistStore();
   return memoryStore.categories.length < initLen;
 }
 
@@ -710,6 +726,7 @@ export async function createProduct(
   }
 
   memoryStore.products.unshift(newProduct);
+  safePersistStore();
   return newProduct;
 }
 
@@ -819,6 +836,7 @@ export async function updateProduct(
         : current.stock_quantity,
   };
 
+  safePersistStore();
   return memoryStore.products[index];
 }
 
@@ -835,6 +853,7 @@ export async function deleteProduct(id: string): Promise<boolean> {
 
   const initialLen = memoryStore.products.length;
   memoryStore.products = memoryStore.products.filter((p) => p.id !== id);
+  safePersistStore();
   return memoryStore.products.length < initialLen;
 }
 
