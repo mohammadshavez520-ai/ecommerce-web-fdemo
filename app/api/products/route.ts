@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 import { getProducts, createProduct } from "@/lib/db";
 import { verifyAdminRequest } from "@/lib/auth";
+import { pushProductToShiprocket } from "@/lib/shiprocket-formatter";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -99,6 +100,13 @@ export async function POST(request: Request) {
       revalidatePath("/product/[slug]", "page");
     } catch (revError) {
       console.warn("[revalidatePath] Cache purge non-fatal error:", revError);
+    }
+
+    // Push new product into Shiprocket catalog in real-time
+    try {
+      await pushProductToShiprocket(newProduct);
+    } catch (srErr) {
+      console.warn("[Shiprocket Catalog Push Warning]:", srErr);
     }
 
     return NextResponse.json({ success: true, product: newProduct }, { status: 201 });

@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { openShiprocketCheckout } from "@/lib/shiprocket-client";
 import { Product } from "@/lib/types";
+import { toNumericId } from "@/lib/shiprocket-formatter";
 
 interface HeroProductItem {
   id: string;
@@ -265,7 +266,7 @@ export function Hero({ initialProducts }: HeroProps = {}) {
                   type="button"
                   data-fastrr-buy
                   data-product-id={activeProduct.id}
-                  data-variant-id={`${activeProduct.id}-default`}
+                  data-variant-id={String(toNumericId(activeProduct.id, 10000000))}
                   data-quantity="1"
                   onClick={(e) => openShiprocketCheckout(e, activeProduct.id, 1)}
                   className="gold-shimmer-btn flex-1 py-3.5 px-6 rounded-2xl text-white font-black text-sm text-center shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 cursor-pointer"

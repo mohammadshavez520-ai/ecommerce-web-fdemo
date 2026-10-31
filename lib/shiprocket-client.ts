@@ -47,7 +47,6 @@ export async function openShiprocketCheckout(
     }
 
     const token = data.token;
-    const fallbackUrl = typeof window !== "undefined" ? `${window.location.origin}/order-success` : "/order-success";
 
     // Track Meta Ads InitiateCheckout Event
     trackMetaEvent("InitiateCheckout", {
@@ -57,20 +56,17 @@ export async function openShiprocketCheckout(
       currency: "INR",
     });
 
-    // Use official HeadlessCheckout object from shopify.js
+    // Use official HeadlessCheckout object from shopify.js.
+    // Do NOT pass fallbackUrl: '/order-success' — fallbackUrl is only invoked on failure!
     if (typeof window !== "undefined" && window.HeadlessCheckout && window.HeadlessCheckout.addToCart) {
-      window.HeadlessCheckout.addToCart(event, token, {
-        fallbackUrl,
-      });
+      window.HeadlessCheckout.addToCart(event, token);
       return;
     }
 
     console.warn("[Shiprocket] HeadlessCheckout not ready yet. Retrying in 500ms...");
     setTimeout(() => {
       if (typeof window !== "undefined" && window.HeadlessCheckout && window.HeadlessCheckout.addToCart) {
-        window.HeadlessCheckout.addToCart(event, token, {
-          fallbackUrl,
-        });
+        window.HeadlessCheckout.addToCart(event, token);
       } else {
         alert("Shiprocket Checkout script is loading. Please click Buy Now again in a moment.");
       }

@@ -23,6 +23,13 @@ export function toNumericId(id: string | number, offset: number = 0): number {
     return knownMap[str] + offset;
   }
 
+  if (/^\d+$/.test(str)) {
+    const parsed = parseInt(str, 10);
+    if (!isNaN(parsed) && parsed > 0 && parsed < 1500000000) {
+      return parsed + offset;
+    }
+  }
+
   // Deterministic 32-bit positive integer hash
   let hash = 0;
   for (let i = 0; i < str.length; i++) {

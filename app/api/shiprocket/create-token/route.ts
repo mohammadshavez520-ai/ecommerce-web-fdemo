@@ -8,7 +8,8 @@
  */
 
 import { NextResponse } from "next/server";
-import { toNumericId, calculateShiprocketHmac } from "@/lib/shiprocket-formatter";
+import { getProductById, getProductBySlug } from "@/lib/db";
+import { toNumericId, calculateShiprocketHmac, pushProductToShiprocket } from "@/lib/shiprocket-formatter";
 
 export const dynamic = "force-dynamic";
 
@@ -30,7 +31,22 @@ export async function POST(request: Request) {
     const body = await request.json();
     const productId = body.productId || "prod-josh-1000";
     const quantity = Math.max(1, Number(body.quantity || 1));
-    const variantId = body.variantId || String(toNumericId(productId, 10000000));
+
+    // Resolve product from database and push real-time catalog entry to Shiprocket if needed
+    const product = (await getProductById(productId)) || (await getProductBySlug(productId));
+    if (product) {
+      try {
+        await pushProductToShiprocket(product);
+      } catch (pushErr) {
+        console.warn("[Shiprocket Just-In-Time Push]", pushErr);
+      }
+    }
+
+    const numericVariantId = toNumericId(product ? product.id : productId, 10000000);
+    const variantId =
+      body.variantId && !isNaN(Number(body.variantId))
+        ? String(body.variantId)
+        : String(numericVariantId);
 
     // Determine public site URL for redirect
     const host = request.headers.get("x-forwarded-host") || request.headers.get("host");
